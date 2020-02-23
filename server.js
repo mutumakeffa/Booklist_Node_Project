@@ -35,8 +35,7 @@ app.use(express.static('public'))
  * Remember to set up the database environment
 */
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser : true})
+mongoose.connect(process.env.DATABASE_URL)
 
 
 /** Log if we are now connected to the db or not */
@@ -49,7 +48,7 @@ app.use('/', indexRouter);
 
 
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 3000);
 
 
 /** 
