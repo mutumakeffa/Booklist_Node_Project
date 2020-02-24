@@ -3,7 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 }
 
-
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
@@ -32,19 +31,22 @@ app.use(express.static('public'))
 
 /** 
  * setting up DB and connecting to MongoDB locally 
- * Remember to set up the database environment
+ * Remember sto set up the database environment
 */
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(process.env.DATABASE_URL, {
+     useNewUrlParser: true , 
+     useUnifiedTopology: true}
+)
 
 
 /** Log if we are now connected to the db or not */
 const db = mongoose.connection
-db.on('error', error => console.error(error));
-db.once('open', () => console.log('Connected to Mongoose!'));
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Mongoose!'))
 
 
-app.use('/', indexRouter);
+app.use('/', indexRouter)
 
 
 
