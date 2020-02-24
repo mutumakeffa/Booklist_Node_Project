@@ -32,10 +32,13 @@ app.use(express.static('public'))
 /** 
  * setting up DB and connecting to MongoDB locally 
  * Remember sto set up the database environment
+ * Declare the PORT variable 
 */
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.PORT, {
+const PORT = process.env.PORT
+
+mongoose.connect(PORT, {
      useNewUrlParser: true , 
      useUnifiedTopology: true}
 )
@@ -51,7 +54,7 @@ app.use('/', indexRouter)
 
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(PORT || 3000);
 
 
 /** 
