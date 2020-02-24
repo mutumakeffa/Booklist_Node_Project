@@ -34,7 +34,8 @@ app.use(express.static('public'))
  * Remember sto set up the database environment
 */
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, {
+
+mongoose.connect(process.env.PORT, {
      useNewUrlParser: true , 
      useUnifiedTopology: true}
 )
