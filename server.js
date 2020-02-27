@@ -3,16 +3,23 @@ if (process.env.NODE_ENV !== 'production') {
 
 }
 
-const express = require('express');
-const app = express();
-const expressLayouts = require('express-ejs-layouts');
+const express = require('express')
+const app = express()
+const expressLayouts = require('express-ejs-layouts')
 
 /**
  * import the routes from our routes controller
  */
 
- const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index')
+const authorRouter = require('./routes/authors')
 
+/**
+ * install and use body-parser to make it easy to read from a server
+ * then remember to tell express how to use that library using app.use()
+ */
+
+const bodyParser = require('body-parser');
 
 /** 
  * set our view engine
@@ -28,6 +35,7 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 /** 
  * setting up DB and connecting to MongoDB locally 
@@ -51,6 +59,8 @@ db.once('open', () => console.log('Connected to Mongoose!'))
 
 
 app.use('/', indexRouter)
+
+app.use('/authors', authorRouter)
 
 
 
