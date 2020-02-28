@@ -30,8 +30,8 @@ const bodyParser = require('body-parser');
  * also tell express where your static files will be 
  * finally tell your app you want to listen in a certain port
 */
-app.set('view engine','ejs')
 app.set('views', __dirname + '/views')
+app.set('view engine','ejs')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))

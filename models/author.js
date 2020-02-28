@@ -12,6 +12,6 @@ const mongoose = require('mongoose')
  })
 
 /**
- * Create  
+ * Create a model
  */
  module.exports = mongoose.model('Author', authorSchema)
